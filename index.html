@@ -32,33 +32,56 @@
     .drawer-closed { transform: translateX(100%); }
   </style>
 </head>
-<body class="selection:bg-cyan-500 selection:text-black">
+<body class="bg-[#0B0E14] text-slate-100 font-sans antialiased selection:bg-brand-cyan selection:text-black min-h-screen relative">
+  <!-- Subtle Industrial/AVL Background Layer -->
+  <div class="fixed inset-0 pointer-events-none z-0">
+    <!-- Production photo with heavy gradient vignette -->
+    <div 
+      class="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-[0.14] mix-blend-luminosity" 
+      style="background-image: url('images/site-bg.jpg');"
+    ></div>
+    <!-- Fine-pitch technical grid overlay -->
+    <div 
+      class="absolute inset-0 opacity-[0.25]" 
+      style="background-image: radial-gradient(#1e293b 1px, transparent 1px); background-size: 32px 32px;"
+    ></div>
+    <!-- Deep vignette to ensure text contrast stays razor-sharp -->
+    <div class="absolute inset-0 bg-gradient-to-b from-[#0B0E14]/70 via-transparent to-[#0B0E14]/90"></div>
+  </div>
 
-  <!-- Top Navigation -->
+  <!-- Wrap the rest of your page content inside a relative z-10 container -->
+  <div class="relative z-10">
+<!-- Top Navigation -->
   <header class="fixed top-0 inset-x-0 z-40 glass border-b border-brand-border">
-    <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-      <div class="flex items-center space-x-3">
-        <div class="w-8 h-8 rounded bg-gradient-to-tr from-brand-blue to-brand-cyan flex items-center justify-center font-black text-black">W</div>
-        <span class="font-bold tracking-widest text-lg uppercase text-white">Worldlight<span class="text-brand-cyan font-mono text-sm ml-1 font-light">PRO</span></span>
-      </div>
+    <div class="max-w-7xl mx-auto px-6 h-32 flex items-center justify-between">
       
-      <nav class="hidden md:flex items-center space-x-8 text-sm font-medium text-slate-300">
-        <a href="#divisions" class="hover:text-brand-cyan transition-colors">Divisions</a>
-        <a href="#work" class="hover:text-brand-cyan transition-colors">Featured Builds</a>
-        <a href="#standards" class="hover:text-brand-cyan transition-colors">The Standard</a>
-        <button onclick="toggleSpecDrawer()" class="text-brand-cyan border border-brand-cyan/30 px-3 py-1.5 rounded-full hover:bg-brand-cyan/10 transition-colors flex items-center gap-2 font-mono text-xs">
-          <span class="w-2 h-2 rounded-full bg-brand-cyan animate-pulse"></span> Tech Stack Specs
-        </button>
-      </nav>
+     <!-- Prominent Worldlight Brand Logo with Luminance Boost -->
+<a href="#" class="flex items-center shrink-0 overflow-visible py-2">
+  <img 
+    src="images/logo.png" 
+    alt="Worldlight Productions" 
+    style="height: 140px; width: auto; max-width: none; filter: brightness(2.6) contrast(1.2) drop-shadow(0 0 10px rgba(0, 229, 255, 0.45));" 
+    class="object-contain -my-6 -ml-4"
+  >
+</a>
+      
+      <!-- Navigation Links -->
+<nav class="hidden md:flex items-center space-x-8 text-sm font-medium text-slate-300">
+  <a href="#divisions" class="hover:text-brand-cyan transition-colors">Divisions</a>
+  <a href="#work" class="hover:text-brand-cyan transition-colors">Featured Builds</a>
+  <a href="#standards" class="hover:text-brand-cyan transition-colors">The Standard</a>
+  <a href="#telemetry" class="hover:text-brand-cyan transition-colors">Telemetry &amp; Rack</a>
+</nav>
 
-      <a href="#intake" class="hidden sm:inline-flex items-center justify-center px-5 py-2.5 rounded text-xs font-semibold uppercase tracking-wider bg-brand-cyan text-black hover:bg-cyan-300 transition-all">
+      <!-- Right: CTA Button -->
+      <a href="#intake" class="hidden sm:inline-flex items-center justify-center px-6 py-3 rounded text-xs font-semibold uppercase tracking-wider bg-brand-cyan text-black hover:bg-cyan-300 transition-all shadow-[0_0_15px_rgba(0,229,255,0.2)]">
         Start a Project
       </a>
     </div>
   </header>
 
-  <!-- Hero Section with Dual Switcher -->
-  <section class="pt-36 pb-20 px-6 max-w-7xl mx-auto">
+  <!-- Hero Section -->
+  <section class="pt-52 md:pt-56 pb-20 px-6 max-w-7xl mx-auto">
     <div class="glass rounded-3xl p-8 md:p-14 border border-brand-border relative overflow-hidden">
       <div class="absolute -top-24 -right-24 w-96 h-96 bg-brand-cyan/10 rounded-full blur-3xl pointer-events-none"></div>
 
@@ -80,100 +103,495 @@
           <a href="#intake" class="px-7 py-3.5 rounded bg-brand-cyan text-black font-semibold text-sm uppercase tracking-wider hover:bg-cyan-300 transition-all">
             Request Proposal
           </a>
-          <button onclick="toggleSpecDrawer()" class="px-7 py-3.5 rounded border border-brand-border hover:border-slate-500 font-semibold text-sm uppercase tracking-wider text-slate-300 hover:text-white transition-all flex items-center gap-2">
-            Engineering Telemetry &rarr;
-          </button>
+          <a href="#standards" class="px-7 py-3.5 rounded border border-brand-border hover:border-slate-500 font-semibold text-sm uppercase tracking-wider text-slate-300 hover:text-white transition-all flex items-center gap-2">
+            Our Standard &rarr;
+          </a>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Dual Pillars: Live Events vs Integration -->
-  <section id="divisions" class="py-20 px-6 max-w-7xl mx-auto">
-    <div class="text-center max-w-xl mx-auto mb-16">
-      <h2 class="text-xs uppercase tracking-widest text-brand-cyan font-mono mb-3">Two Core Divisions</h2>
-      <p class="text-3xl font-bold text-white tracking-tight">One Uncompromising Standard</p>
-    </div>
-
-    <div class="grid md:grid-cols-2 gap-8">
-      <!-- Live Production Pillar -->
-      <div class="glass rounded-2xl p-8 md:p-10 border border-brand-border hover:border-brand-cyan/50 transition-all group">
-        <div class="flex justify-between items-start mb-6">
-          <div class="w-12 h-12 rounded-xl bg-cyan-950/60 border border-brand-cyan/30 flex items-center justify-center text-brand-cyan">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+  <!-- Divisions Section (3-Column Layout) -->
+  <section id="divisions" class="py-20 px-6 max-w-7xl mx-auto scroll-mt-32">
+    <div class="grid md:grid-cols-3 gap-6">
+      
+      <!-- Division 1: Live Event Production -->
+      <div class="glass rounded-2xl p-8 border border-brand-border hover:border-slate-500 transition-all flex flex-col justify-between">
+        <div>
+          <div class="flex items-center justify-between mb-6">
+            <div class="w-10 h-10 rounded-lg bg-brand-cyan/10 border border-brand-cyan/20 flex items-center justify-center text-brand-cyan">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+            </div>
+            <span class="text-[10px] font-mono text-slate-500 uppercase tracking-widest">Turnkey Live</span>
           </div>
-          <span class="font-mono text-xs text-brand-dim uppercase tracking-wider">Turnkey Live</span>
+
+          <h3 class="text-xl font-bold text-white mb-3">Live Event Production</h3>
+          <p class="text-xs text-brand-dim leading-relaxed mb-6">
+            Arena-scale corporate conferences, arena tours, and festival stages. We deliver high-impact audio, fine-pitch LED volumes, dynamic lighting, and broadcast video systems pre-racked and soak-tested.
+          </p>
+
+          <ul class="text-xs font-mono text-slate-400 space-y-2 mb-6">
+            <li class="flex items-center gap-2">
+              <span class="w-1.5 h-1.5 rounded-full bg-brand-cyan"></span> Allen &amp; Heath dLive / Waves SuperRack
+            </li>
+            <li class="flex items-center gap-2">
+              <span class="w-1.5 h-1.5 rounded-full bg-brand-cyan"></span> NovaStar MX Series / COEX VMP Processing
+            </li>
+            <li class="flex items-center gap-2">
+              <span class="w-1.5 h-1.5 rounded-full bg-brand-cyan"></span> Redundant Netgear M4250/M4300 Networks
+            </li>
+          </ul>
         </div>
-        <h3 class="text-2xl font-bold text-white mb-3">Live Event Production</h3>
-        <p class="text-brand-dim text-sm leading-relaxed mb-6">
-          Arena-scale corporate conferences, arena tours, and festival stages. We deliver high-impact audio, fine-pitch LED volumes, dynamic lighting, and broadcast video systems pre-racked and soak-tested.
-        </p>
-        <ul class="space-y-2 text-xs font-mono text-slate-300 border-t border-brand-border pt-6 mb-6">
-          <li class="flex items-center gap-2"><span class="text-brand-cyan">&bull;</span> Allen &amp; Heath dLive / Waves SuperRack</li>
-          <li class="flex items-center gap-2"><span class="text-brand-cyan">&bull;</span> NovaStar MX Series / COEX VMP Processing</li>
-          <li class="flex items-center gap-2"><span class="text-brand-cyan">&bull;</span> Redundant Netgear M4250/M4300 AV-over-IP Networks</li>
-        </ul>
-        <a href="#intake" class="inline-flex items-center gap-2 text-xs font-bold text-brand-cyan uppercase tracking-wider group-hover:gap-3 transition-all">Book Show Crew &rarr;</a>
+
+        <a href="#intake" class="inline-flex items-center gap-2 text-xs font-mono text-brand-cyan hover:text-cyan-300 uppercase tracking-wider font-semibold pt-4 border-t border-brand-border/40">
+          Book Show Crew &rarr;
+        </a>
       </div>
 
-      <!-- Systems Integration Pillar -->
-      <div class="glass rounded-2xl p-8 md:p-10 border border-brand-border hover:border-brand-blue/50 transition-all group">
-        <div class="flex justify-between items-start mb-6">
-          <div class="w-12 h-12 rounded-xl bg-blue-950/60 border border-brand-blue/30 flex items-center justify-center text-brand-blue">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>
+      <!-- Division 2: Systems Integration -->
+      <div class="glass rounded-2xl p-8 border border-brand-border hover:border-slate-500 transition-all flex flex-col justify-between">
+        <div>
+          <div class="flex items-center justify-between mb-6">
+            <div class="w-10 h-10 rounded-lg bg-brand-blue/10 border border-brand-blue/20 flex items-center justify-center text-brand-blue">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>
+            </div>
+            <span class="text-[10px] font-mono text-slate-500 uppercase tracking-widest">Permanent Builds</span>
           </div>
-          <span class="font-mono text-xs text-brand-dim uppercase tracking-wider">Permanent Builds</span>
+
+          <h3 class="text-xl font-bold text-white mb-3">Systems Integration</h3>
+          <p class="text-xs text-brand-dim leading-relaxed mb-6">
+            Houses of worship, auditoriums, and commercial facilities. We handle everything from structural acoustic modeling and precision line arrays to custom laser-labeled rack fabrication and staff training.
+          </p>
+
+          <ul class="text-xs font-mono text-slate-400 space-y-2 mb-6">
+            <li class="flex items-center gap-2">
+              <span class="w-1.5 h-1.5 rounded-full bg-brand-blue"></span> Singlemode OS2 Core-Alignment Splicing
+            </li>
+            <li class="flex items-center gap-2">
+              <span class="w-1.5 h-1.5 rounded-full bg-brand-blue"></span> Laser-Cut Patchbays &amp; Clean Thermo Racking
+            </li>
+            <li class="flex items-center gap-2">
+              <span class="w-1.5 h-1.5 rounded-full bg-brand-blue"></span> As-Built Schematics &amp; Volunteer Training
+            </li>
+          </ul>
         </div>
-        <h3 class="text-2xl font-bold text-white mb-3">Systems Integration</h3>
-        <p class="text-brand-dim text-sm leading-relaxed mb-6">
-          Houses of worship, auditoriums, and commercial facilities. We handle everything from structural acoustic modeling and precision line arrays to custom laser-labeled rack fabrication and staff training.
-        </p>
-        <ul class="space-y-2 text-xs font-mono text-slate-300 border-t border-brand-border pt-6 mb-6">
-          <li class="flex items-center gap-2"><span class="text-brand-blue">&bull;</span> Singlemode OS2 Core-Alignment Fusion Splicing</li>
-          <li class="flex items-center gap-2"><span class="text-brand-blue">&bull;</span> Laser-Cut Patchbays &amp; Clean Thermo Racking</li>
-          <li class="flex items-center gap-2"><span class="text-brand-blue">&bull;</span> As-Built Schematics &amp; Complete Volunteer Training</li>
-        </ul>
-        <a href="#intake" class="inline-flex items-center gap-2 text-xs font-bold text-brand-blue uppercase tracking-wider group-hover:gap-3 transition-all">Schedule Site Survey &rarr;</a>
+
+        <a href="#intake" class="inline-flex items-center gap-2 text-xs font-mono text-brand-blue hover:text-cyan-300 uppercase tracking-wider font-semibold pt-4 border-t border-brand-border/40">
+          Schedule Site Survey &rarr;
+        </a>
       </div>
+
+      <!-- Division 3: Production Cross-Rental -->
+      <div class="glass rounded-2xl p-8 border border-brand-border hover:border-slate-500 transition-all flex flex-col justify-between">
+        <div>
+          <div class="flex items-center justify-between mb-6">
+            <div class="w-10 h-10 rounded-lg bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-400">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"/></svg>
+            </div>
+            <span class="text-[10px] font-mono text-slate-500 uppercase tracking-widest">Tour &amp; Peer Support</span>
+          </div>
+
+          <h3 class="text-xl font-bold text-white mb-3">Production Cross-Rental</h3>
+          <p class="text-xs text-brand-dim leading-relaxed mb-6">
+            Pre-configured, soak-tested inventory packages for touring crews, regional houses, and technical directors needing zero-failure sub-rentals to meet rider specifications.
+          </p>
+
+          <ul class="text-xs font-mono text-slate-400 space-y-2 mb-6">
+            <li class="flex items-center gap-2">
+              <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span> Shure Axient Digital Quad RF Packages
+            </li>
+            <li class="flex items-center gap-2">
+              <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span> Allen &amp; Heath dLive MixRacks &amp; Surfaces
+            </li>
+            <li class="flex items-center gap-2">
+              <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span> NovaStar COEX 4K Video Processing
+            </li>
+          </ul>
+        </div>
+
+        <a href="#intake" class="inline-flex items-center gap-2 text-xs font-mono text-emerald-400 hover:text-cyan-300 uppercase tracking-wider font-semibold pt-4 border-t border-brand-border/40">
+          Check Inventory &amp; Manifests &rarr;
+        </a>
+      </div>
+
     </div>
   </section>
 
-  <!-- Featured Builds / Proof of Work -->
-  <section id="work" class="py-20 px-6 max-w-7xl mx-auto border-t border-brand-border">
+<!-- Featured Builds / Proof of Work -->
+  <section id="work" class="py-20 px-6 max-w-7xl mx-auto border-t border-brand-border scroll-mt-32">
     <div class="flex flex-col md:flex-row md:items-end justify-between mb-12">
       <div>
-        <h2 class="text-xs uppercase tracking-widest text-brand-cyan font-mono mb-2">Portfolio</h2>
-        <p class="text-3xl font-bold text-white">Recent Deployments</p>
+        <h2 class="text-xs uppercase tracking-widest text-brand-cyan font-mono mb-2">Proven Deployments</h2>
+        <p class="text-3xl font-bold text-white">Recent Builds &amp; Show Operations</p>
       </div>
-      <p class="text-brand-dim text-sm mt-3 md:mt-0">Click any card to inspect the technical schematic.</p>
+      <p class="text-brand-dim text-sm mt-3 md:mt-0">Click any deployment to inspect the engineering telemetry.</p>
     </div>
 
     <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-      <div onclick="openModal('Arena General Session', 'Live Production', 'Dual dLive S7000 surfaces over redundant gigaACE with 128 Dante split lines. 48-foot 2.6mm LED backdrop driven by NovaStar MX40 Pro.')" class="glass rounded-xl p-6 border border-brand-border cursor-pointer hover:border-slate-500 transition-all">
-        <span class="text-[10px] font-mono text-brand-cyan uppercase bg-brand-cyan/10 px-2 py-0.5 rounded">Live Event</span>
-        <h4 class="text-lg font-bold text-white mt-4 mb-2">Arena Keynote General Session</h4>
-        <p class="text-xs text-brand-dim leading-relaxed">Multi-room convention floor, zero latency broadcast feeds, 128-channel live audio split.</p>
-        <span class="inline-block mt-4 text-xs font-mono text-slate-400 group-hover:text-white">View Blueprint &rarr;</span>
+      
+      <!-- Build 1: Arena General Session / Major Live Event -->
+      <div onclick="openModal('Arena General Session & Broadcast', 'Live Event Production', 'Turnkey arena AVL deployment: 60-foot 2.6mm LED backdrop driven by NovaStar MX40 Pro with full failover, Allen & Heath dLive S7000 at FOH, redundant gigaACE trunks, and 128 Dante split channels feeding low-latency multi-truck broadcast packages.')" class="glass rounded-xl overflow-hidden border border-brand-border cursor-pointer hover:border-brand-cyan/60 transition-all group">
+        <div class="h-48 w-full overflow-hidden bg-slate-950 relative border-b border-brand-border/60">
+          <!-- Blue background overlay to "ghost" the dark state -->
+          <div class="absolute inset-0 bg-blue-950/40 mix-blend-color z-10 pointer-events-none group-hover:opacity-0 transition-opacity duration-500"></div>
+          <img 
+            src="images/build-arena.jpg" 
+            alt="Arena Live Production" 
+            class="w-full h-full object-cover opacity-25 grayscale group-hover:opacity-100 group-hover:grayscale-0 group-hover:scale-105 transition-all duration-500 ease-out"
+          >
+        </div>
+        <div class="p-6">
+          <div class="flex items-center justify-between mb-2">
+            <span class="text-[10px] font-mono text-brand-cyan uppercase bg-brand-cyan/10 px-2 py-0.5 rounded">Live Production</span>
+            <span class="text-[10px] font-mono text-slate-500">Arena Scale</span>
+          </div>
+          <h4 class="text-lg font-bold text-white mb-2 group-hover:text-brand-cyan transition-colors">Arena General Session &amp; Broadcast</h4>
+          <p class="text-xs text-brand-dim leading-relaxed">Turnkey arena audio, 60-foot fine-pitch LED video wall, synchronized lighting, and zero-latency broadcast splits.</p>
+          <span class="inline-block mt-4 text-xs font-mono text-slate-400 group-hover:text-white">View Blueprint &rarr;</span>
+        </div>
       </div>
 
-      <div onclick="openModal('Civic Auditorium AVL Overhaul', 'Systems Integration', 'Turnkey line-array array hangs, acoustic boundary dampening, singlemode fiber runs to FOH/Broadcast, Netgear M4350 core.')" class="glass rounded-xl p-6 border border-brand-border cursor-pointer hover:border-slate-500 transition-all">
-        <span class="text-[10px] font-mono text-brand-blue uppercase bg-brand-blue/10 px-2 py-0.5 rounded">Integration</span>
-        <h4 class="text-lg font-bold text-white mt-4 mb-2">Civic Auditorium Integration</h4>
-        <p class="text-xs text-brand-dim leading-relaxed">Complete acoustic recalculation, fine-pitch sanctuary LED wall, singlemode fiber infrastructure.</p>
-        <span class="inline-block mt-4 text-xs font-mono text-slate-400 group-hover:text-white">View Blueprint &rarr;</span>
+      <!-- Build 2: Multi-City Touring Package -->
+      <div onclick="openModal('Touring Fly-Pack & Stage Engine', 'Live Touring Package', 'Pre-configured for streamlined festival and venue turnarounds. Custom shock-mounted road racks with integrated UPS, redundant Netgear M4250 managed AV switches, Shure Axient Digital wireless with real-time spectrum management, and plug-and-play multi-pin stage drops.')" class="glass rounded-xl overflow-hidden border border-brand-border cursor-pointer hover:border-brand-cyan/60 transition-all group">
+        <div class="h-48 w-full overflow-hidden bg-slate-950 relative border-b border-brand-border/60">
+          <!-- Blue background overlay to "ghost" the dark state -->
+          <div class="absolute inset-0 bg-blue-950/40 mix-blend-color z-10 pointer-events-none group-hover:opacity-0 transition-opacity duration-500"></div>
+          <img 
+            src="images/build-tour.jpg" 
+            alt="Touring Fly-Pack Rig" 
+            class="w-full h-full object-cover opacity-25 grayscale group-hover:opacity-100 group-hover:grayscale-0 group-hover:scale-105 transition-all duration-500 ease-out"
+          >
+        </div>
+        <div class="p-6">
+          <div class="flex items-center justify-between mb-2">
+            <span class="text-[10px] font-mono text-brand-cyan uppercase bg-brand-cyan/10 px-2 py-0.5 rounded">Touring Package</span>
+            <span class="text-[10px] font-mono text-slate-500">Turnkey Deploy</span>
+          </div>
+          <h4 class="text-lg font-bold text-white mb-2 group-hover:text-brand-cyan transition-colors">Amphitheater &amp; Festival Touring Rig</h4>
+          <p class="text-xs text-brand-dim leading-relaxed">Shock-mounted fly-pack road racks, automated hitless power conditioning, and networked RF telemetry.</p>
+          <span class="inline-block mt-4 text-xs font-mono text-slate-400 group-hover:text-white">View Blueprint &rarr;</span>
+        </div>
       </div>
 
-      <div onclick="openModal('Regional Tour Package', 'Live Production', 'Fully pre-rigged touring racks with integrated UPS power conditioning, Bitfocus Companion automation, and Dante Stagebox drops.')" class="glass rounded-xl p-6 border border-brand-border cursor-pointer hover:border-slate-500 transition-all">
-        <span class="text-[10px] font-mono text-brand-cyan uppercase bg-brand-cyan/10 px-2 py-0.5 rounded">Live Event</span>
-        <h4 class="text-lg font-bold text-white mt-4 mb-2">Regional Amphitheater Tour</h4>
-        <p class="text-xs text-brand-dim leading-relaxed">Rapid 90-minute load-in shock-mounted rack packages with integrated wireless mic telemetry.</p>
-        <span class="inline-block mt-4 text-xs font-mono text-slate-400 group-hover:text-white">View Blueprint &rarr;</span>
+      <!-- Build 3: Architectural Systems Integration -->
+      <div onclick="openModal('Civic Auditorium Turnkey Overhaul', 'Systems Integration', 'Complete structural acoustic remodeling, precision line array rigging, singlemode OS2 fusion-spliced backbone between FOH and central rack room, custom laser-etched patchbays, and complete volunteer staff training.')" class="glass rounded-xl overflow-hidden border border-brand-border cursor-pointer hover:border-brand-blue/60 transition-all group">
+        <div class="h-48 w-full overflow-hidden bg-slate-950 relative border-b border-brand-border/60">
+          <!-- Blue background overlay to "ghost" the dark state -->
+          <div class="absolute inset-0 bg-blue-950/40 mix-blend-color z-10 pointer-events-none group-hover:opacity-0 transition-opacity duration-500"></div>
+          <img 
+            src="images/build-auditorium.jpg" 
+            alt="Auditorium Systems Integration" 
+            class="w-full h-full object-cover opacity-25 grayscale group-hover:opacity-100 group-hover:grayscale-0 group-hover:scale-105 transition-all duration-500 ease-out"
+          >
+        </div>
+        <div class="p-6">
+          <div class="flex items-center justify-between mb-2">
+            <span class="text-[10px] font-mono text-brand-blue uppercase bg-brand-blue/10 px-2 py-0.5 rounded">Integration</span>
+            <span class="text-[10px] font-mono text-slate-500">Permanent Build</span>
+          </div>
+          <h4 class="text-lg font-bold text-white mb-2 group-hover:text-brand-blue transition-colors">Auditorium &amp; Sanctuary Overhaul</h4>
+          <p class="text-xs text-brand-dim leading-relaxed">Structural acoustic tuning, permanent fine-pitch LED array, core-alignment fusion-spliced singlemode fiber.</p>
+          <span class="inline-block mt-4 text-xs font-mono text-slate-400 group-hover:text-white">View Blueprint &rarr;</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+<!-- Interactive Engineering Telemetry & Rack Architecture -->
+  <section id="telemetry" class="py-24 px-6 max-w-7xl mx-auto border-t border-brand-border scroll-mt-32">
+    <div class="flex flex-col md:flex-row md:items-end justify-between mb-12">
+      <div>
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-800/80 border border-slate-700 text-xs text-brand-dim font-mono mb-4">
+          <span class="w-2 h-2 rounded-full bg-brand-cyan animate-pulse"></span> SYSTEM HEALTH: NOMINAL // 96kHz SYNC
+        </div>
+        <h2 class="text-xs uppercase tracking-widest text-brand-cyan font-mono mb-2">Hardware Telemetry</h2>
+        <p class="text-3xl font-bold text-white tracking-tight">Interactive Rack Architecture &amp; Signal Topology</p>
+      </div>
+      
+      <!-- Mode Switcher -->
+      <div class="inline-flex p-1 bg-slate-900 border border-brand-border rounded-lg mt-6 md:mt-0">
+        <button id="btnViewRack" onclick="switchTelemetryView('rack')" class="px-4 py-2 text-xs font-mono uppercase tracking-wider rounded bg-brand-cyan text-black font-bold transition-all">
+          19" Flight Rack
+        </button>
+        <button id="btnViewTopo" onclick="switchTelemetryView('topo')" class="px-4 py-2 text-xs font-mono uppercase tracking-wider rounded text-slate-400 hover:text-white transition-all">
+          Signal Topology
+        </button>
+      </div>
+    </div>
+
+    <!-- 12-Column Grid with Equal Height -->
+    <div class="grid lg:grid-cols-12 gap-8 items-stretch">
+      
+      <!-- Left Column: 19" Rack Bay & Topology (7 Cols) -->
+      <div class="lg:col-span-7 flex flex-col">
+        
+        <!-- View 1: 19" Touring Flight Rack Visualizer -->
+        <div id="rackViewContainer" class="bg-slate-950 border-2 border-slate-800 rounded-2xl p-4 md:p-6 shadow-2xl relative overflow-hidden h-full flex flex-col justify-between">
+          <div>
+            <!-- Top Chassis Header -->
+            <div class="flex justify-between items-center text-[9px] font-mono text-slate-500 mb-4 px-3 pb-2 border-b border-slate-800/80 uppercase tracking-widest">
+              <span class="flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-brand-cyan"></span> Rail A // Left Upright</span>
+              <span class="text-slate-400 font-semibold">19" Shock-Mounted Chassis // 16U Capacity</span>
+              <span class="flex items-center gap-1.5">Rail B // Right Upright <span class="w-1.5 h-1.5 rounded-full bg-brand-cyan"></span></span>
+            </div>
+
+            <!-- Main Rack Bay (Rails + Equipment) -->
+            <div class="relative flex gap-2 sm:gap-3 items-stretch bg-[#07090e] p-2 sm:p-3 rounded-xl border border-slate-800/90 shadow-inner">
+              <!-- Left Rail -->
+              <div class="w-6 sm:w-8 flex flex-col justify-between py-2 items-center bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 border-x border-slate-700/60 rounded-sm select-none shadow-md">
+                <div class="flex flex-col items-center gap-1 my-1"><span class="w-2.5 h-2.5 rounded-full bg-slate-950 border border-slate-600 shadow-inner flex items-center justify-center"><span class="w-1.5 h-0.5 bg-slate-500"></span></span><span class="text-[7px] font-mono text-slate-600">01</span></div>
+                <div class="flex flex-col items-center gap-1 my-1"><span class="w-2.5 h-2.5 rounded-full bg-slate-950 border border-slate-600 shadow-inner flex items-center justify-center"><span class="w-1.5 h-0.5 bg-slate-500"></span></span><span class="text-[7px] font-mono text-slate-600">02</span></div>
+                <div class="flex flex-col items-center gap-1 my-1"><span class="w-2.5 h-2.5 rounded-full bg-slate-950 border border-slate-600 shadow-inner flex items-center justify-center"><span class="w-1.5 h-0.5 bg-slate-500"></span></span><span class="text-[7px] font-mono text-slate-600">03</span></div>
+                <div class="flex flex-col items-center gap-1 my-1"><span class="w-2.5 h-2.5 rounded-full bg-slate-950 border border-slate-600 shadow-inner flex items-center justify-center"><span class="w-1.5 h-0.5 bg-slate-500"></span></span><span class="text-[7px] font-mono text-slate-600">04</span></div>
+                <div class="flex flex-col items-center gap-1 my-1"><span class="w-2.5 h-2.5 rounded-full bg-slate-950 border border-slate-600 shadow-inner flex items-center justify-center"><span class="w-1.5 h-0.5 bg-slate-500"></span></span><span class="text-[7px] font-mono text-slate-600">06</span></div>
+                <div class="flex flex-col items-center gap-1 my-1"><span class="w-2.5 h-2.5 rounded-full bg-slate-950 border border-slate-600 shadow-inner flex items-center justify-center"><span class="w-1.5 h-0.5 bg-slate-500"></span></span><span class="text-[7px] font-mono text-slate-600">09</span></div>
+              </div>
+
+              <!-- Middle Bay: Loaded 19" Gear Units -->
+              <div class="flex-1 space-y-2.5">
+                <!-- 1U: Furman F1500-UPS -->
+                <div onclick="inspectGear('power')" id="gear-power" class="gear-slot border border-slate-800 hover:border-brand-cyan/70 bg-slate-900/90 rounded-lg p-3 cursor-pointer transition-all flex items-center justify-between group shadow-sm">
+                  <div class="flex items-center gap-3">
+                    <span class="text-[10px] font-mono text-slate-500 w-6">01U</span>
+                    <div>
+                      <div class="text-xs font-bold text-white group-hover:text-brand-cyan transition-colors">FURMAN F1500-UPS-E</div>
+                      <div class="text-[10px] font-mono text-slate-400">1500VA Linear Filtering &amp; True Sine Surge Core</div>
+                    </div>
+                  </div>
+                  <div class="flex items-center gap-2">
+                    <span class="text-[9px] font-mono px-2 py-0.5 rounded bg-emerald-950 text-emerald-400 border border-emerald-800">121.4V</span>
+                    <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+                  </div>
+                </div>
+
+                <!-- 1U: Netgear M4250 -->
+                <div onclick="inspectGear('network')" id="gear-network" class="gear-slot border border-brand-cyan/50 bg-slate-900 rounded-lg p-3 cursor-pointer transition-all flex items-center justify-between group shadow-sm">
+                  <div class="flex items-center gap-3">
+                    <span class="text-[10px] font-mono text-slate-500 w-6">02U</span>
+                    <div>
+                      <div class="text-xs font-bold text-white group-hover:text-brand-cyan transition-colors">NETGEAR AV LINE M4250-26G4F</div>
+                      <div class="text-[10px] font-mono text-slate-400">VLAN 10: Dante Prim // VLAN 20: Dante Sec // VLAN 30: Control</div>
+                    </div>
+                  </div>
+                  <div class="flex items-center gap-2">
+                    <div class="flex gap-1">
+                      <span class="w-1.5 h-1.5 rounded-full bg-brand-cyan animate-ping"></span>
+                      <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+                      <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- 1U: Shure Axient Digital -->
+                <div onclick="inspectGear('rf')" id="gear-rf" class="gear-slot border border-slate-800 hover:border-brand-cyan/70 bg-slate-900/90 rounded-lg p-3 cursor-pointer transition-all flex items-center justify-between group shadow-sm">
+                  <div class="flex items-center gap-3">
+                    <span class="text-[10px] font-mono text-slate-500 w-6">03U</span>
+                    <div>
+                      <div class="text-xs font-bold text-white group-hover:text-brand-cyan transition-colors">SHURE AD4Q AXIENT DIGITAL</div>
+                      <div class="text-[10px] font-mono text-slate-400">Quad Channel True Diversity // ShowLink Backchannel</div>
+                    </div>
+                  </div>
+                  <div class="flex items-center gap-2 text-[9px] font-mono text-cyan-300">
+                    <span>CH1-4 QUAD SYNC</span>
+                    <span class="w-2 h-2 rounded-full bg-brand-cyan"></span>
+                  </div>
+                </div>
+
+                <!-- 2U: NovaStar MX40 Pro -->
+                <div onclick="inspectGear('video')" id="gear-video" class="gear-slot border border-slate-800 hover:border-brand-cyan/70 bg-slate-900/90 rounded-lg p-3 cursor-pointer transition-all flex items-center justify-between group shadow-sm">
+                  <div class="flex items-center gap-3">
+                    <span class="text-[10px] font-mono text-slate-500 w-6">04U</span>
+                    <div>
+                      <div class="text-xs font-bold text-white group-hover:text-brand-cyan transition-colors">NOVASTAR COEX MX40 PRO</div>
+                      <div class="text-[10px] font-mono text-slate-400">4K Flagship LED Processor // 20x 1G Output // 4x 10G Optical</div>
+                    </div>
+                  </div>
+                  <div class="flex items-center gap-2">
+                    <span class="text-[9px] font-mono px-2 py-0.5 rounded bg-blue-950 text-blue-300 border border-blue-800">4K@60Hz</span>
+                  </div>
+                </div>
+
+                <!-- 3U: Allen & Heath dLive CDM32 -->
+                <div onclick="inspectGear('audio')" id="gear-audio" class="gear-slot border border-slate-800 hover:border-brand-cyan/70 bg-slate-900/90 rounded-lg p-3 cursor-pointer transition-all flex items-center justify-between group shadow-sm">
+                  <div class="flex items-center gap-3">
+                    <span class="text-[10px] font-mono text-slate-500 w-6">06U</span>
+                    <div>
+                      <div class="text-xs font-bold text-white group-hover:text-brand-cyan transition-colors">ALLEN &amp; HEATH dLIVE CDM32</div>
+                      <div class="text-[10px] font-mono text-slate-400">XCVI Core // 96kHz FPGA // Dual gigaACE &amp; Waves SuperRack</div>
+                    </div>
+                  </div>
+                  <div class="flex items-center gap-2">
+                    <span class="text-[9px] font-mono text-emerald-400">LOCKED 96k</span>
+                    <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+                  </div>
+                </div>
+
+                <!-- 1U: Patch Bay & Fiber Splicing Box -->
+                <div onclick="inspectGear('fiber')" id="gear-fiber" class="gear-slot border border-slate-800 hover:border-brand-cyan/70 bg-slate-900/90 rounded-lg p-3 cursor-pointer transition-all flex items-center justify-between group shadow-sm">
+                  <div class="flex items-center gap-3">
+                    <span class="text-[10px] font-mono text-slate-500 w-6">09U</span>
+                    <div>
+                      <div class="text-xs font-bold text-white group-hover:text-brand-cyan transition-colors">WLP CUSTOM OS2 FIBER / D-HOLE PATCH PANEL</div>
+                      <div class="text-[10px] font-mono text-slate-400">Neutrik opticalCON DUO/QUAD // Dante // PowerCON TRUE1 TOP</div>
+                    </div>
+                  </div>
+                  <div class="flex items-center gap-2">
+                    <span class="text-[9px] font-mono text-brand-cyan">OPTICAL OS2</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Right Rail -->
+              <div class="w-6 sm:w-8 flex flex-col justify-between py-2 items-center bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 border-x border-slate-700/60 rounded-sm select-none shadow-md">
+                <div class="flex flex-col items-center gap-1 my-1"><span class="w-2.5 h-2.5 rounded-full bg-slate-950 border border-slate-600 shadow-inner flex items-center justify-center"><span class="w-1.5 h-0.5 bg-slate-500"></span></span><span class="text-[7px] font-mono text-slate-600">01</span></div>
+                <div class="flex flex-col items-center gap-1 my-1"><span class="w-2.5 h-2.5 rounded-full bg-slate-950 border border-slate-600 shadow-inner flex items-center justify-center"><span class="w-1.5 h-0.5 bg-slate-500"></span></span><span class="text-[7px] font-mono text-slate-600">02</span></div>
+                <div class="flex flex-col items-center gap-1 my-1"><span class="w-2.5 h-2.5 rounded-full bg-slate-950 border border-slate-600 shadow-inner flex items-center justify-center"><span class="w-1.5 h-0.5 bg-slate-500"></span></span><span class="text-[7px] font-mono text-slate-600">03</span></div>
+                <div class="flex flex-col items-center gap-1 my-1"><span class="w-2.5 h-2.5 rounded-full bg-slate-950 border border-slate-600 shadow-inner flex items-center justify-center"><span class="w-1.5 h-0.5 bg-slate-500"></span></span><span class="text-[7px] font-mono text-slate-600">04</span></div>
+                <div class="flex flex-col items-center gap-1 my-1"><span class="w-2.5 h-2.5 rounded-full bg-slate-950 border border-slate-600 shadow-inner flex items-center justify-center"><span class="w-1.5 h-0.5 bg-slate-500"></span></span><span class="text-[7px] font-mono text-slate-600">06</span></div>
+                <div class="flex flex-col items-center gap-1 my-1"><span class="w-2.5 h-2.5 rounded-full bg-slate-950 border border-slate-600 shadow-inner flex items-center justify-center"><span class="w-1.5 h-0.5 bg-slate-500"></span></span><span class="text-[7px] font-mono text-slate-600">09</span></div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Bottom Instructional Indicator -->
+          <div class="text-center pt-4">
+            <span class="text-[10px] font-mono text-slate-500 uppercase tracking-widest">&uarr; Click any hardware unit to inspect live field telemetry &darr;</span>
+          </div>
+        </div>
+
+        <!-- View 2: Signal Flow Topology Diagram -->
+        <div id="topoViewContainer" class="hidden bg-slate-950 border-2 border-slate-800 rounded-2xl p-6 shadow-2xl relative h-full flex flex-col justify-between">
+          <div>
+            <div class="text-[10px] font-mono text-brand-cyan mb-4 uppercase tracking-widest">// ARCHITECTURAL TOPOLOGY &amp; TRUNK ROUTING</div>
+            <svg viewBox="0 0 700 420" class="w-full h-auto text-slate-300 font-mono text-xs select-none">
+              <defs>
+                <pattern id="diagGrid" width="20" height="20" patternUnits="userSpaceOnUse">
+                  <path d="M 20 0 L 0 0 0 20" fill="none" stroke="#1e293b" stroke-width="0.5"/>
+                </pattern>
+              </defs>
+              <rect width="100%" height="100%" fill="url(#diagGrid)" opacity="0.4" />
+
+              <path d="M 120 70 L 220 70 L 220 210 L 320 210" fill="none" stroke="#00d4ff" stroke-width="2" stroke-dasharray="4,4" class="animate-pulse" />
+              <path d="M 440 210 L 520 210 L 520 140 L 560 140" fill="none" stroke="#10b981" stroke-width="2" />
+              <path d="M 560 140 L 480 140 L 480 330 L 320 330" fill="none" stroke="#00d4ff" stroke-width="2" />
+              <path d="M 440 330 L 580 330" fill="none" stroke="#38bdf8" stroke-width="3" />
+
+              <!-- Node 1: Stage RF / Wireless -->
+              <g class="cursor-pointer" onclick="inspectGear('rf')">
+                <rect x="20" y="45" width="130" height="50" rx="6" fill="#0f172a" stroke="#00d4ff" stroke-width="1.5"/>
+                <text x="35" y="68" fill="#ffffff" font-weight="bold" font-size="11">AXIENT RF</text>
+                <text x="35" y="82" fill="#00d4ff" font-size="9">Dante Primary</text>
+              </g>
+
+              <!-- Node 2: Audio Engine (dLive CDM32) -->
+              <g class="cursor-pointer" onclick="inspectGear('audio')">
+                <rect x="320" y="185" width="130" height="50" rx="6" fill="#10b981" stroke="#10b981" stroke-width="1.5"/>
+                <text x="335" y="208" fill="#ffffff" font-weight="bold" font-size="11">dLIVE CDM32</text>
+                <text x="335" y="222" fill="#10b981" font-size="9">96kHz XCVI Core</text>
+              </g>
+
+              <!-- Node 3: Core Switch (Netgear M4250) -->
+              <g class="cursor-pointer" onclick="inspectGear('network')">
+                <rect x="560" y="115" width="130" height="50" rx="6" fill="#0f172a" stroke="#38bdf8" stroke-width="1.5"/>
+                <text x="575" y="138" fill="#ffffff" font-weight="bold" font-size="11">M4250 CORE</text>
+                <text x="575" y="152" fill="#38bdf8" font-size="9">VLAN 10/20 Isolated</text>
+              </g>
+
+              <!-- Node 4: Video Engine (NovaStar MX40) -->
+              <g class="cursor-pointer" onclick="inspectGear('video')">
+                <rect x="320" y="305" width="130" height="50" rx="6" fill="#0f172a" stroke="#00d4ff" stroke-width="1.5"/>
+                <text x="335" y="328" fill="#ffffff" font-weight="bold" font-size="11">NOVASTAR MX40</text>
+                <text x="335" y="342" fill="#00d4ff" font-size="9">COEX 4K Fiber Out</text>
+              </g>
+
+              <!-- Node 5: Field Fiber Trunk -->
+              <g class="cursor-pointer" onclick="inspectGear('fiber')">
+                <rect x="560" y="305" width="130" height="50" rx="6" fill="#0f172a" stroke="#e2e8f0" stroke-width="1.5"/>
+                <text x="575" y="328" fill="#ffffff" font-weight="bold" font-size="11">FIBER TRUNK</text>
+                <text x="575" y="342" fill="#94a3b8" font-size="9">OS2 Singlemode</text>
+              </g>
+            </svg>
+          </div>
+          <div class="text-center pt-4">
+            <span class="text-[10px] font-mono text-slate-500 uppercase tracking-widest">&uarr; Click any topology block to review line diagnostics &darr;</span>
+          </div>
+        </div>
+      </div> <!-- /lg:col-span-7 -->
+
+      <!-- Right Column: Real-Time Diagnostic Inspector Card (5 Cols) -->
+      <div class="lg:col-span-5 flex flex-col">
+        <div class="glass rounded-2xl p-6 md:p-8 border border-brand-border shadow-xl h-full flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between pb-4 border-b border-brand-border/60 mb-6">
+              <div class="flex items-center gap-2">
+                <span class="w-2.5 h-2.5 rounded-full bg-brand-cyan animate-pulse"></span>
+                <span class="text-xs font-mono uppercase tracking-widest text-brand-cyan">Field Telemetry Feed</span>
+              </div>
+              <span id="telemetryUnitId" class="text-xs font-mono text-slate-500">02U // SWITCH</span>
+            </div>
+
+            <h3 id="telemetryTitle" class="text-2xl font-bold text-white mb-2">Netgear M4250-26G4F</h3>
+            <p id="telemetryCategory" class="text-xs font-mono uppercase text-brand-cyan mb-4">Core AV-over-IP Backbone</p>
+            <p id="telemetryDesc" class="text-xs text-brand-dim leading-relaxed mb-6">
+              Enterprise managed layer-2/layer-3 switch pre-configured for zero-configuration Dante, AES67, and video over IP. Dual 10G SFP+ singlemode fiber uplinks feed stage drops and FOH surfaces with hardware VLAN segregation.
+            </p>
+
+            <!-- Dynamic Field Telemetry Metrics -->
+            <div class="grid grid-cols-2 gap-3 mb-6">
+              <div class="bg-slate-900/90 border border-slate-800 rounded-lg p-3">
+                <div class="text-[10px] font-mono text-slate-500 uppercase">Clocking / Sync</div>
+                <div id="statSync" class="text-sm font-mono font-bold text-emerald-400 mt-0.5">PTP v2 (IEEE 1588)</div>
+              </div>
+              <div class="bg-slate-900/90 border border-slate-800 rounded-lg p-3">
+                <div class="text-[10px] font-mono text-slate-500 uppercase">Thermal Load</div>
+                <div id="statTemp" class="text-sm font-mono font-bold text-white mt-0.5">38.2&deg;C Nominal</div>
+              </div>
+              <div class="bg-slate-900/90 border border-slate-800 rounded-lg p-3">
+                <div class="text-[10px] font-mono text-slate-500 uppercase">Redundancy Link</div>
+                <div id="statLink" class="text-sm font-mono font-bold text-brand-cyan mt-0.5">Hitless Sec Trunk</div>
+              </div>
+              <div class="bg-slate-900/90 border border-slate-800 rounded-lg p-3">
+                <div class="text-[10px] font-mono text-slate-500 uppercase">Provisioning</div>
+                <div id="statShop" class="text-sm font-mono font-bold text-slate-300 mt-0.5">Bench Tested 100%</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Live Engineering Notes -->
+          <div class="border-t border-brand-border/60 pt-4">
+            <div class="text-[10px] font-mono uppercase text-slate-400 mb-2">Lead Technician SOP:</div>
+            <p id="telemetrySOP" class="text-xs text-slate-400 font-mono leading-relaxed bg-slate-950 p-3 rounded border border-slate-800/80">
+              Primary and Secondary Dante trunks are strictly air-gapped on separate VLAN IDs with IGMP Querier enabled to prevent broadcast flooding.
+            </p>
+          </div>
+        </div>
+      </div> <!-- /lg:col-span-5 -->
+
+    </div> <!-- /grid lg:grid-cols-12 -->
+  </section> <!-- /#telemetry -->
+
+  <!-- Cross-Rental Inventory Manifest Callout -->
+  <section class="pb-16 px-6 max-w-7xl mx-auto">
+    <div class="glass rounded-2xl p-6 md:p-8 border border-brand-border/80 flex flex-col md:flex-row items-start md:items-center justify-between gap-6 bg-slate-950/60">
+      <div>
+        <div class="inline-flex items-center gap-2 px-2.5 py-0.5 rounded bg-brand-cyan/10 border border-brand-cyan/30 text-[10px] font-mono text-brand-cyan mb-2">
+          PEER-TO-PEER CROSS-RENTAL
+        </div>
+        <h3 class="text-lg font-bold text-white">Need gear to fulfill an artist rider or supplement a tour run?</h3>
+        <p class="text-xs text-brand-dim mt-1 max-w-2xl">
+          We maintain dedicated sub-rental packages for regional production companies and touring directors. All fly-packs ship fully pre-patched, bench-tested, and updated to the latest stable firmware.
+        </p>
+      </div>
+      <div class="flex-shrink-0">
+        <a href="#intake" class="px-5 py-2.5 rounded bg-slate-800 hover:bg-slate-700 border border-slate-600 text-white font-mono text-xs uppercase tracking-wider transition-colors inline-block text-center">
+          Request Sub-Rental Manifest
+        </a>
       </div>
     </div>
   </section>
 
   <!-- Interactive Project Intake Form -->
-  <section id="intake" class="py-24 px-6 max-w-4xl mx-auto">
+  <section id="intake" class="py-24 px-6 max-w-4xl mx-auto scroll-mt-32">
     <div class="glass rounded-3xl p-8 md:p-14 border border-brand-border">
       <div class="mb-8">
         <h2 class="text-xs uppercase tracking-widest text-brand-cyan font-mono mb-2">Initiate Deployment</h2>
@@ -181,39 +599,54 @@
       </div>
 
       <form id="projectForm" onsubmit="handleFormSubmit(event)" class="space-y-6">
+        <input type="hidden" name="access_key" value="6f02d87f-6248-412e-8a88-9fcf4ecf2c6e">
+        <input type="hidden" name="subject" value="New Project Intake Brief - Worldlight Productions">
+        <input type="hidden" name="from_name" value="Worldlight Web Intake">
+
         <div class="grid md:grid-cols-2 gap-6">
           <div>
             <label class="block text-xs font-mono uppercase text-brand-dim mb-2">Full Name</label>
-            <input type="text" required placeholder="Your Name" class="w-full bg-slate-900 border border-brand-border rounded px-4 py-3 text-sm text-white focus:outline-none focus:border-brand-cyan transition-colors">
+            <input type="text" name="name" required placeholder="Your Name" class="w-full bg-slate-900 border border-brand-border rounded px-4 py-3 text-sm text-white focus:outline-none focus:border-brand-cyan transition-colors">
           </div>
           <div>
             <label class="block text-xs font-mono uppercase text-brand-dim mb-2">Organization / Venue</label>
-            <input type="text" required placeholder="Event Co. / Grace Center" class="w-full bg-slate-900 border border-brand-border rounded px-4 py-3 text-sm text-white focus:outline-none focus:border-brand-cyan transition-colors">
+            <input type="text" name="organization" required placeholder="Event Co. / Grace Center" class="w-full bg-slate-900 border border-brand-border rounded px-4 py-3 text-sm text-white focus:outline-none focus:border-brand-cyan transition-colors">
+          </div>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-6">
+          <div>
+            <label class="block text-xs font-mono uppercase text-brand-dim mb-2">Email Address</label>
+            <input type="email" name="email" required placeholder="name@company.com" class="w-full bg-slate-900 border border-brand-border rounded px-4 py-3 text-sm text-white focus:outline-none focus:border-brand-cyan transition-colors">
+          </div>
+          <div>
+            <label class="block text-xs font-mono uppercase text-brand-dim mb-2">Phone Number</label>
+            <input type="tel" name="phone" placeholder="(423) 555-0199" class="w-full bg-slate-900 border border-brand-border rounded px-4 py-3 text-sm text-white focus:outline-none focus:border-brand-cyan transition-colors">
           </div>
         </div>
 
         <div class="grid md:grid-cols-2 gap-6">
           <div>
             <label class="block text-xs font-mono uppercase text-brand-dim mb-2">Work Scope</label>
-            <select class="w-full bg-slate-900 border border-brand-border rounded px-4 py-3 text-sm text-white focus:outline-none focus:border-brand-cyan transition-colors">
-              <option>Live Event Production (Tour / Conference)</option>
-              <option>Systems Integration (New Venue / Retrofit)</option>
-              <option>Sub-Rental / Engineering Labor</option>
+            <select name="scope" class="w-full bg-slate-900 border border-brand-border rounded px-4 py-3 text-sm text-white focus:outline-none focus:border-brand-cyan transition-colors">
+              <option value="Live Event Production">Live Event Production (Tour / Conference)</option>
+              <option value="Systems Integration">Systems Integration (New Venue / Retrofit)</option>
+              <option value="Production Cross-Rental">Production Cross-Rental (Sub-Rental / Gear Support)</option>
             </select>
           </div>
           <div>
             <label class="block text-xs font-mono uppercase text-brand-dim mb-2">Estimated Date / Timeline</label>
-            <input type="text" placeholder="Q3 2026 / Specific Dates" class="w-full bg-slate-900 border border-brand-border rounded px-4 py-3 text-sm text-white focus:outline-none focus:border-brand-cyan transition-colors">
+            <input type="text" name="timeline" placeholder="Q3 2026 / Specific Dates" class="w-full bg-slate-900 border border-brand-border rounded px-4 py-3 text-sm text-white focus:outline-none focus:border-brand-cyan transition-colors">
           </div>
         </div>
 
         <div>
           <label class="block text-xs font-mono uppercase text-brand-dim mb-2">Project Brief &amp; Technical Requirements</label>
-          <textarea rows="4" placeholder="Room dimensions, expected audience size, key deliverables (Audio, LED, Lighting, Fiber runs)..." class="w-full bg-slate-900 border border-brand-border rounded px-4 py-3 text-sm text-white focus:outline-none focus:border-brand-cyan transition-colors"></textarea>
+          <textarea name="message" rows="4" required placeholder="Room dimensions, expected audience size, key deliverables (Audio, LED, Lighting, Fiber runs)..." class="w-full bg-slate-900 border border-brand-border rounded px-4 py-3 text-sm text-white focus:outline-none focus:border-brand-cyan transition-colors"></textarea>
         </div>
 
-        <button type="submit" class="w-full py-4 rounded bg-brand-cyan text-black font-bold uppercase tracking-wider hover:bg-cyan-300 transition-colors text-sm">
-          Submit Project Brief
+        <button id="submitBtn" type="submit" class="w-full py-4 rounded bg-brand-cyan text-black font-bold uppercase tracking-wider hover:bg-cyan-300 transition-colors text-sm flex items-center justify-center gap-2">
+          <span>Submit Project Brief</span>
         </button>
       </form>
 
@@ -227,37 +660,7 @@
     </div>
   </section>
 
-  <!-- Spec Slide-Over Drawer (On-Demand Engineering Specs) -->
-  <div id="specDrawer" class="fixed inset-y-0 right-0 w-full max-w-md bg-slate-950 border-l border-brand-border z-50 p-8 overflow-y-auto drawer-closed transition-transform duration-300 ease-in-out">
-    <div class="flex items-center justify-between pb-6 border-b border-brand-border mb-6">
-      <h3 class="font-bold text-white text-lg">Engineering Standards</h3>
-      <button onclick="toggleSpecDrawer()" class="text-slate-400 hover:text-white font-mono text-sm">[CLOSE X]</button>
-    </div>
-
-    <div class="space-y-6 text-sm">
-      <div>
-        <h4 class="font-mono text-xs uppercase text-brand-cyan mb-2">Audio Architecture</h4>
-        <p class="text-brand-dim text-xs leading-relaxed">Allen &amp; Heath dLive ecosystems (gigaACE / DX expanders), Waves SoundGrid, Shure Axient Digital with full network monitoring.</p>
-      </div>
-
-      <div>
-        <h4 class="font-mono text-xs uppercase text-brand-cyan mb-2">Video &amp; LED Processing</h4>
-        <p class="text-brand-dim text-xs leading-relaxed">NovaStar MX series, COEX VMP software control, multi-camera Blackmagic studio workflows, low-latency broadcast switching.</p>
-      </div>
-
-      <div>
-        <h4 class="font-mono text-xs uppercase text-brand-cyan mb-2">Network Infrastructure</h4>
-        <p class="text-brand-dim text-xs leading-relaxed">Netgear AV Line managed switches (M4250, M4300, M4350) with Dante/AES67 VLAN isolation, Tailscale secure tunnel endpoints.</p>
-      </div>
-
-      <div>
-        <h4 class="font-mono text-xs uppercase text-brand-cyan mb-2">Physical Plant &amp; Splicing</h4>
-        <p class="text-brand-dim text-xs leading-relaxed">Singlemode (OS2) core-alignment fusion splicing, mechanical splice-on connectors, RF coax sweep testing, custom laser patch panels.</p>
-      </div>
-    </div>
-  </div>
-
-  <!-- Project Blueprint Modal -->
+ <!-- Project Blueprint Modal -->
   <div id="projectModal" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-6 hidden">
     <div class="glass rounded-2xl max-w-lg w-full p-8 border border-brand-border">
       <span id="modalType" class="text-[10px] font-mono text-brand-cyan uppercase bg-brand-cyan/10 px-2 py-0.5 rounded">Category</span>
@@ -267,17 +670,11 @@
     </div>
   </div>
 
+  <!-- Footer -->
   <footer class="py-12 border-t border-brand-border text-center text-xs font-mono text-slate-500">
     <p>&copy; 2026 Worldlight Productions. Cleveland, TN. All rights reserved.</p>
   </footer>
-
-  <script>
-    function toggleSpecDrawer() {
-      const drawer = document.getElementById('specDrawer');
-      drawer.classList.toggle('drawer-closed');
-      drawer.classList.toggle('drawer-open');
-    }
-
+<script>
     function openModal(title, type, desc) {
       document.getElementById('modalTitle').innerText = title;
       document.getElementById('modalType').innerText = type;
@@ -289,11 +686,160 @@
       document.getElementById('projectModal').classList.add('hidden');
     }
 
-    function handleFormSubmit(e) {
+    async function handleFormSubmit(e) {
       e.preventDefault();
-      document.getElementById('projectForm').classList.add('hidden');
-      document.getElementById('formSuccess').classList.remove('hidden');
+      const form = document.getElementById('projectForm');
+      const submitBtn = document.getElementById('submitBtn');
+      
+      // Visual feedback while the API call is in flight
+      if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = '<span class="animate-pulse">Transmitting Specs...</span>';
+      }
+
+      const formData = new FormData(form);
+
+      try {
+        const response = await fetch('https://api.web3forms.com/submit', {
+          method: 'POST',
+          body: formData
+        });
+
+        const data = await response.json();
+
+        if (data.success) {
+          form.classList.add('hidden');
+          document.getElementById('formSuccess').classList.remove('hidden');
+        } else {
+          alert('Submission failed: ' + (data.message || 'Please check your connection and try again.'));
+          if (submitBtn) {
+            submitBtn.disabled = false;
+            submitBtn.innerHTML = '<span>Submit Project Brief</span>';
+          }
+        }
+      } catch (err) {
+        alert('Network transmission error. Please try again.');
+        if (submitBtn) {
+          submitBtn.disabled = false;
+          submitBtn.innerHTML = '<span>Submit Project Brief</span>';
+        }
+      }
+    }
+    const rackTelemetryData = {
+      power: {
+        unitId: "01U // POWER",
+        title: "Furman F1500-UPS-E",
+        category: "Power Conditioning & Battery Backup",
+        desc: "True sine wave uninterruptible power supply engineered for high-draw audio and processing cores. Delivers SMP surge suppression and isolated clean power across voltage sags or brownouts.",
+        sync: "60Hz Regulated",
+        temp: "32.0°C Nominal",
+        link: "Automated Switchover",
+        shop: "Cleveland Bench Soak",
+        sop: "Ensures FPGA consoles, DSP engines, and network switches remain powered without restart during generator switches or shore power hiccups."
+      },
+      network: {
+        unitId: "02U // SWITCH",
+        title: "Netgear AV Line M4250-26G4F",
+        category: "Core AV-over-IP Backbone",
+        desc: "Enterprise managed layer-2/layer-3 switch pre-configured for zero-configuration Dante, AES67, and video over IP. Dual 10G SFP+ singlemode fiber uplinks feed stage drops and FOH surfaces with hardware VLAN segregation.",
+        sync: "PTP v2 (IEEE 1588)",
+        temp: "38.2°C Nominal",
+        link: "Hitless Sec Trunk",
+        shop: "Bench Tested 100%",
+        sop: "Primary and Secondary Dante trunks are strictly air-gapped on separate VLAN IDs with IGMP Querier enabled to prevent broadcast flooding."
+      },
+      rf: {
+        unitId: "03U // WIRELESS RF",
+        title: "Shure Axient Digital AD4Q",
+        category: "Quad Networked Wireless Receiver",
+        desc: "True diversity digital receiver providing clean frequency tuning from 470 to 636 MHz. Networked Dante out feeds dLive surfaces directly with integrated ShowLink backchannel control.",
+        sync: "Quad Diversity",
+        temp: "34.5°C Nominal",
+        link: "Dual Dante + Analog Fail",
+        shop: "RF Sweep Verified",
+        sop: "Real-time spectrum monitoring via Wireless Workbench. Automatic frequency agile switching engaged for mission-critical keynote transmitters."
+      },
+      video: {
+        unitId: "04U // VIDEO ENGINE",
+        title: "NovaStar COEX MX40 Pro",
+        category: "4K Flagship LED Processor",
+        desc: "High-capacity 4K LED processor running COEX VMP software. Supports 12-bit HDR, zero frame latency mode, and redundant 10G optical output loops directly to LED video walls.",
+        sync: "Genlock Locked (Tri-Level)",
+        temp: "44.1°C Active",
+        link: "Loop-Through Backup",
+        shop: "Pixel Map Calibrated",
+        sop: "Configured with automatic signal loop redundancy. If primary trunk drops, backup optical path switches in less than 1 frame with zero screen artifacting."
+      },
+      audio: {
+        unitId: "06U // AUDIO CORE",
+        title: "Allen & Heath dLive CDM32",
+        category: "96kHz FPGA DSP MixRack",
+        desc: "128 input channels and 64 phase-coherent mix outputs powered by XCVI 96kHz core. Hosts dual gigaACE cards, Waves SoundGrid, and primary/secondary Dante stage boxes.",
+        sync: "Word Clock 96.000 kHz",
+        temp: "41.8°C Nominal",
+        link: "Redundant gigaACE",
+        shop: "Firmware Aligned",
+        sop: "MixRack runs headless on stage; redundant network lines ensure front-of-house surfaces can disconnect without dropping live show audio."
+      },
+      fiber: {
+        unitId: "09U // PHYSICAL INFRASTRUCTURE",
+        title: "Custom OS2 Singlemode Patchbay",
+        category: "Laser-Etched Tactical Fiber & I/O",
+        desc: "Ruggedized Neutrik opticalCON DUO and QUAD chassis connectors with fusion-spliced OS2 singlemode cores. Provides high-bandwidth trunks for broadcast, video, and Dante over hundreds of feet.",
+        sync: "< 0.1dB Insertion Loss",
+        temp: "Ambient Passive",
+        link: "Dual Trunk Loops",
+        shop: "OTDR & Sweep Cleared",
+        sop: "Precision core-alignment fusion spliced; all patch points labeled with high-contrast laser etching for zero-light backstage patching."
+      }
+    };
+
+    function inspectGear(key) {
+      const item = rackTelemetryData[key];
+      if (!item) return;
+
+      // Update right-hand telemetry fields
+      document.getElementById('telemetryUnitId').innerText = item.unitId;
+      document.getElementById('telemetryTitle').innerText = item.title;
+      document.getElementById('telemetryCategory').innerText = item.category;
+      document.getElementById('telemetryDesc').innerText = item.desc;
+      document.getElementById('statSync').innerText = item.sync;
+      document.getElementById('statTemp').innerText = item.temp;
+      document.getElementById('statLink').innerText = item.link;
+      document.getElementById('statShop').innerText = item.shop;
+      document.getElementById('telemetrySOP').innerText = item.sop;
+
+      // Highlight active rack slot
+      document.querySelectorAll('.gear-slot').forEach(el => {
+        el.classList.remove('border-brand-cyan');
+        el.classList.add('border-slate-800');
+      });
+      const activeSlot = document.getElementById('gear-' + key);
+      if (activeSlot) {
+        activeSlot.classList.remove('border-slate-800');
+        activeSlot.classList.add('border-brand-cyan');
+      }
+    }
+
+    function switchTelemetryView(view) {
+      const rackContainer = document.getElementById('rackViewContainer');
+      const topoContainer = document.getElementById('topoViewContainer');
+      const btnRack = document.getElementById('btnViewRack');
+      const btnTopo = document.getElementById('btnViewTopo');
+
+      if (view === 'rack') {
+        rackContainer.classList.remove('hidden');
+        topoContainer.classList.add('hidden');
+        btnRack.className = "px-4 py-2 text-xs font-mono uppercase tracking-wider rounded bg-brand-cyan text-black font-bold transition-all";
+        btnTopo.className = "px-4 py-2 text-xs font-mono uppercase tracking-wider rounded text-slate-400 hover:text-white transition-all";
+      } else {
+        rackContainer.classList.add('hidden');
+        topoContainer.classList.remove('hidden');
+        btnTopo.className = "px-4 py-2 text-xs font-mono uppercase tracking-wider rounded bg-brand-cyan text-black font-bold transition-all";
+        btnRack.className = "px-4 py-2 text-xs font-mono uppercase tracking-wider rounded text-slate-400 hover:text-white transition-all";
+      }
     }
   </script>
+</div> <!-- /relative z-10 wrapper -->
 </body>
 </html>
